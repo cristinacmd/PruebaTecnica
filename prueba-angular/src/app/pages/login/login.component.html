@@ -1,0 +1,49 @@
+<div class="login-container">
+  <div class="login-left">
+    <img src="/images/login.svg" alt="ilustracion" />
+  </div>
+  <div class="login-right">
+    <div class="login-box">
+      <img src="/images/logos/Logo-RD.svg" alt="logo" />
+
+      <h2>Inicia sesión en tu cuenta</h2>
+
+      <!-- Correo Electrónico -->
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline" class="form-field">
+          <input matInput id="email" formControlName="email" type="email" placeholder="Correo electrónico" required />
+          <mat-error *ngIf="form.controls['email'].invalid && form.controls['email'].touched">
+            Correo electrónico requerido.
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Contraseña -->
+        <mat-form-field appearance="outline" class="form-field">
+          <input matInput id="password" formControlName="password" type="password" placeholder="Contraseña" [type]="hide ? 'password' : 'text'" required />
+          <button mat-icon-button matSuffix (click)="togglePasswordVisibility()" type="button" class="eye-button">
+            <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          <mat-error *ngIf="form.controls['password'].invalid && form.controls['password'].touched">
+            Contraseña requerida.
+          </mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button class="btn" color="primary" type="submit" [disabled]="form.invalid">ENTRAR</button>
+      </form>
+
+      <div class="divider">Otra forma de acceso:</div>
+
+      <button class="btn-secondary">ENTRAR CON SSO</button>
+
+      <p class="register">
+        ¿No tienes cuenta? <a href="#">Regístrate</a>
+      </p>
+
+      <div class="footer">
+        <span>IDIOMA: ES</span>
+        <img src="images/logos/Econocom.svg" alt="econocom logo" />
+      </div>
+
+    </div>
+  </div>
+</div>
